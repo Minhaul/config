@@ -10,6 +10,7 @@ set backspace=indent,eol,start
 
 set ruler
 set number
+set relativenumber
 
 set tabstop=2
 set shiftwidth=2
