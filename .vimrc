@@ -2,7 +2,7 @@
 inoremap jk <ESC>
 
 " Change space to leader
-let mapleader = "\<Space>"
+let mapleader ="\<Space>"
 
 " Make sure this is vim, not vi
 set nocompatible
@@ -15,14 +15,24 @@ set relativenumber
 set tabstop=2
 set shiftwidth=2
 set expandtab
- 
-" Enable filetype detection and syntax hilighting
+
+" Enable filetype detection and syntax highlighting
 syntax on
 filetype on
 filetype indent on
 filetype plugin on
- 
+
 " Indent as intelligently as vim knows how
 set smartindent
 
 set showcmd
+
+function! NumberToggle()
+  if(&relativenumber == 1)
+    set relativenumber!
+  else
+    set relativenumber
+  endif
+endfunc
+
+nnoremap <C-n> :call NumberToggle()<cr>
