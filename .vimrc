@@ -16,6 +16,9 @@ set tabstop=2
 set shiftwidth=2
 set expandtab
 
+" Uncomment if you want to use the railscasts color scheme
+"colorscheme railscasts
+
 " Enable filetype detection and syntax highlighting
 syntax on
 filetype on
