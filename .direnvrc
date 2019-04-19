@@ -1,0 +1,39 @@
+# Usage: layout anaconda <enviroment_name> [<conda_exe>]
+#
+# Activates anaconda for the named environment. If the environment
+# hasn't been created, it will be using the environment.yml file in
+# the current directory. <conda_exe> is optional and will default to
+# the one found in the system environment.
+#
+layout_anaconda() {
+  local env_config
+  if [[ $# -gt 0 ]]; then
+    env_config=${1}
+  else
+    env_config=environment.yml
+  fi
+  local env_path=$PWD/.direnv/conda/$env_config
+
+  local conda
+  if [[ $# -gt 2 ]]; then
+    conda=${3}
+  else
+    conda=$(command -v conda)
+  fi
+  PATH_add $(dirname "$conda")
+  local env_loc=$("$conda" env list | grep -- "$env_path")
+  if [[ ! "$env_loc" == *$env_config ]]; then
+    if [[ -e $env_config ]]; then
+      log_status "creating conda environment"
+      "$conda" env create -f=$env_config -p=$env_path
+    elif [[ -e environment.yml ]]; then
+      log_status "creating conda from enviroment.yml"
+      "$conda" env create -p=$env_path
+    else
+      log_error "Could not find environment file"
+      return 1
+    fi
+  fi
+ 
+  source activate "$env_path"
+}
