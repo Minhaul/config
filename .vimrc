@@ -5,7 +5,7 @@ call plug#begin()
 " Begin list of plugins
 Plug 'https://github.com/tpope/vim-fugitive'
 "Plug 'https://github.com/ctrlpvim/ctrlp.vim'
-Plug '/usr/local/opt/fzf'
+Plug '~/.fzf'
 Plug 'https://github.com/junegunn/fzf.vim'
 "Plug 'https://github.com/Valloric/YouCompleteMe'
 Plug 'https://github.com/chazy/cscope_maps'
