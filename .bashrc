@@ -5,8 +5,9 @@
 export PS1="\[\e[36m\][\w]\[\e[0m\]: "
 export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 export CC_PREFIX='ccache '
-export CSCOPE_EDITOR=/usr/local/bin/nvim
-export EDITOR=/usr/local/bin/nvim
+export CSCOPE_EDITOR=/usr/bin/nvim
+export EDITOR=/usr/bin/nvim
+export PATH="$PATH:/home/msolomon/code/scripts"
 
 alias ls='ls -G'
 alias vim='nvim'
