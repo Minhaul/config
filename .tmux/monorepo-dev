@@ -1,6 +1,6 @@
-# fw-darkhorse dev session
+# monorepo dev session
 rename-session tokill
-new -s dh-dev -n source -c /home/msolomon/code/fw-darkhorse
+new -s monorepo-dev -n source -c /home/msolomon/code/monorepo
 kill-session -t tokill
 
 new-window -d -n git/build
@@ -8,8 +8,6 @@ split-window -d -h -t git/build
 
 new-window -d -n debug
 split-window -d -h -b -t debug
-# No longer necessary since jlink gdb server runs automatically on jflash
-# split-window -d -v -b -t debug -l 2
 
 new-window -d -n general
 split-window -d -h -t general

@@ -1,6 +1,6 @@
 # fw-bison dev session
 rename-session tokill
-new -s bison-dev -n source -c /Users/msolomon/code/fw-bison
+new -s bison-dev -n source -c /home/msolomon/code/fw-bison
 kill-session -t tokill
 
 new-window -d -n git/build
