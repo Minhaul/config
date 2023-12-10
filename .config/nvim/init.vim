@@ -320,16 +320,16 @@ set signcolumn=yes
 " other plugin before putting this into your config
 inoremap <silent><expr> <C-j>
       \ coc#pum#visible() ? coc#pum#next(1) :
-      \ CheckBackspace() ? "\<Tab>" :
+      \ CheckBackspace() ? "\<C-j>" :
       \ coc#refresh()
-inoremap <expr><C-k> coc#pum#visible() ? coc#pum#prev(1) : "\<C-h>"
+inoremap <expr><C-k> coc#pum#visible() ? coc#pum#prev(1) : "\<C-k>"
 
 " Make <CR> and <TAB> accept selected completion item or notify coc.nvim to format
 " <C-g>u breaks current undo, please make your own choice
 inoremap <silent><expr> <CR> coc#pum#visible() ? coc#pum#confirm()
                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 inoremap <silent><expr> <TAB> coc#pum#visible() ? coc#pum#confirm()
-                              \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
+                              \: "\<C-g>u\<TAB>\<c-r>=coc#on_enter()\<CR>"
 
 function! CheckBackspace() abort
   let col = col('.') - 1
@@ -495,7 +495,6 @@ augroup END
 
 set ruler
 set number
-set relativenumber
 
 set tabstop=2
 set shiftwidth=2
@@ -531,14 +530,6 @@ au BufNewFile,BufRead *.s,*.sx,*.S set filetype=arm " arm = armv6/7
 set smartindent
 
 set showcmd
-
-function! NumberToggle()
-  if(&relativenumber == 1)
-    set relativenumber!
-  else
-    set relativenumber
-  endif
-endfunc
 
 " nnoremap <C-n> :call NumberToggle()<cr>
 
