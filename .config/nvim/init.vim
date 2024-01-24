@@ -4,16 +4,22 @@ call plug#begin()
 
 " Begin list of plugins
 Plug 'tpope/vim-obsession'
+Plug 'tpope/vim-repeat'
 source /usr/share/doc/fzf/examples/fzf.vim
 Plug 'junegunn/fzf.vim'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 Plug 'chazy/cscope_maps'
-Plug 'vim-scripts/Conque-GDB' ", { 'on': 'ConqueGdbExe' }
+"Plug 'vim-scripts/Conque-GDB' ", { 'on': 'ConqueGdbExe' }
 Plug 'rust-lang/rust.vim'
 Plug 'Chiel92/vim-autoformat'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'nvim-telescope/telescope.nvim', { 'branch': '0.1.x' }
+Plug 'ggandor/leap.nvim'
+Plug 'numToStr/Comment.nvim'
 
 " UI Changes
-Plug 'kyazdani42/nvim-web-devicons'
+Plug 'nvim-tree/nvim-web-devicons' " Get font DejaVuSansM Nerd Font (nerdfonts.com/font-downloads)
 Plug 'feline-nvim/feline.nvim', { 'branch': '0.5-compat' }
 Plug 'akinsho/bufferline.nvim', { 'tag': 'v4.*' }
 
@@ -155,7 +161,7 @@ require'nvim-tree'.setup {
   },
   git = {
     enable = true,
-    ignore = true,
+    ignore = false,
     timeout = 400,
   },
   actions = {
@@ -211,6 +217,12 @@ require("bufferline").setup {
   }
 }
 EOF
+" }}}
+" {{{ Leap Settings
+lua require('leap').add_default_mappings()
+" }}}
+" {{{ Comment Settings
+lua require('Comment').setup()
 " }}}
 " Deprecated Settings {{{
 " Cscope Settings {{{
@@ -282,8 +294,8 @@ EOF
 " }}}
 " }}}
 
-" Remap ESC to jk
-inoremap jk <ESC>
+" Remap ESC to tn
+inoremap tn <ESC>
 
 " Remap ESC to clear search highlighting
 nnoremap <silent> <esc> :noh<cr><esc>
@@ -291,10 +303,10 @@ nnoremap <silent> <esc> :noh<cr><esc>
 " Switch tabs with H and L
 "nnoremap H gT
 "nnoremap L gt
-nnoremap H :BufferLineCyclePrev<CR>
-nnoremap L :BufferLineCycleNext<CR>
-nnoremap <C-H> :BufferLineMovePrev<CR>
-nnoremap <C-L> :BufferLineMoveNext<CR>
+nnoremap <C-Left> :BufferLineCyclePrev<CR>
+nnoremap <C-Right> :BufferLineCycleNext<CR>
+"nnoremap <C-H> :BufferLineMovePrev<CR>
+"nnoremap <C-L> :BufferLineMoveNext<CR>
 
 " Change comma to leader
 let mapleader =","
@@ -303,6 +315,12 @@ let mapleader =","
 nnoremap <silent> <Leader>u :ConqueGdbCommand up 1<CR>
 nnoremap <silent> <Leader>d :ConqueGdbCommand down 1<CR>
 let g:ConqueTerm_PyVersion = 3
+" }}}
+" Telescope Settings {{{
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 " }}}
 " CoC Settings {{{
 " Some servers have issues with backup files, see #649
@@ -372,8 +390,8 @@ autocmd CursorHold * silent call CocActionAsync('highlight')
 nmap <leader>rn <Plug>(coc-rename)
 
 " Formatting selected code
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
+"xmap <leader>f  <Plug>(coc-format-selected)
+"nmap <leader>f  <Plug>(coc-format-selected)
 
 augroup mygroup
   autocmd!
