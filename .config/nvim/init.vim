@@ -19,8 +19,8 @@ Plug 'ggandor/leap.nvim'
 Plug 'numToStr/Comment.nvim'
 
 " UI Changes
-Plug 'nvim-tree/nvim-web-devicons' " Get font DejaVuSansM Nerd Font (nerdfonts.com/font-downloads)
-Plug 'feline-nvim/feline.nvim', { 'branch': '0.5-compat' }
+Plug 'nvim-tree/nvim-web-devicons' " Get font Caskaydia Mono (nerdfonts.com/font-downloads)
+Plug 'echasnovski/mini.statusline', { 'branch': 'stable' }
 Plug 'akinsho/bufferline.nvim', { 'tag': 'v4.*' }
 
 " Git Plugins
@@ -94,9 +94,9 @@ require'nvim-web-devicons'.setup {
 }
 EOF
 " }}}
-" Feline Settings {{{
+" Mini Statusline Settings {{{
 lua << EOF
-require('feline').setup()
+require('mini.statusline').setup()
 EOF
 " }}}
 " NvimTree Settings {{{
