@@ -39,19 +39,6 @@ Plug 'sheerun/vim-polyglot'
 call plug#end()
 " }}}
 set termguicolors
-" FZF Settings {{{
-map <C-p> :Files<CR>
-
-" Set the key bindings for different splits
-let g:fzf_action = {
-  \ 'ctrl-t': 'tab split',
-  \ 'ctrl-s': 'split',
-  \ 'ctrl-v': 'vsplit' }
-
-" fzf search pane positioning
-" - down / up / left / right
-let g:fzf_layout = { 'down': '~30%' }
-" }}}
 " GitSigns Settings {{{
 lua << EOF
 require('gitsigns').setup {
@@ -225,7 +212,7 @@ lua require('leap').add_default_mappings()
 lua require('Comment').setup()
 " }}}
 " Deprecated Settings {{{
-" Cscope Settings {{{
+" Cscope Settings (Deprecated) {{{
 "set nocscopeverbose
 " }}}
 " CtrlP Settings (Deprecated) {{{
@@ -237,6 +224,19 @@ lua require('Comment').setup()
 "  let g:ctrlp_user_command = 'rg %s --files --color=never --glob ""'
 "  let g:ctrlp_use_caching = 0
 "endif
+" }}}
+" FZF Settings (Deprecated) {{{
+" map <C-p> :Files<CR>
+
+" Set the key bindings for different splits
+" let g:fzf_action = {
+"   \ 'ctrl-t': 'tab split',
+"   \ 'ctrl-s': 'split',
+"   \ 'ctrl-v': 'vsplit' }
+
+" fzf search pane positioning
+" - down / up / left / right
+" let g:fzf_layout = { 'down': '~30%' }
 " }}}
 " Airline Settings (Deprecated) {{{
 " let g:airline_powerline_fonts = 0
@@ -300,11 +300,10 @@ inoremap tn <ESC>
 " Remap ESC to clear search highlighting
 nnoremap <silent> <esc> :noh<cr><esc>
 
-" Switch tabs with H and L
-"nnoremap H gT
-"nnoremap L gt
+" Switch tabs with ctrl arrows
 nnoremap <C-Left> :BufferLineCyclePrev<CR>
 nnoremap <C-Right> :BufferLineCycleNext<CR>
+" How move tabs?
 "nnoremap <C-H> :BufferLineMovePrev<CR>
 "nnoremap <C-L> :BufferLineMoveNext<CR>
 
@@ -317,10 +316,9 @@ nnoremap <silent> <Leader>d :ConqueGdbCommand down 1<CR>
 let g:ConqueTerm_PyVersion = 3
 " }}}
 " Telescope Settings {{{
-nnoremap <leader>ff <cmd>Telescope find_files<cr>
-nnoremap <leader>fg <cmd>Telescope live_grep<cr>
-nnoremap <leader>fb <cmd>Telescope buffers<cr>
-nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+nnoremap <leader>t <cmd>Telescope<cr>
+nnoremap <C-p> <cmd>Telescope find_files<cr>
+nnoremap <leader>b <cmd>Telescope buffers<cr>
 " }}}
 " CoC Settings {{{
 " Some servers have issues with backup files, see #649
@@ -392,6 +390,8 @@ nmap <leader>rn <Plug>(coc-rename)
 " Formatting selected code
 "xmap <leader>f  <Plug>(coc-format-selected)
 "nmap <leader>f  <Plug>(coc-format-selected)
+" Formatting Buffer
+nmap <leader>f  <Plug>(coc-format)
 
 augroup mygroup
   autocmd!
@@ -548,8 +548,6 @@ au BufNewFile,BufRead *.s,*.sx,*.S set filetype=arm " arm = armv6/7
 set smartindent
 
 set showcmd
-
-" nnoremap <C-n> :call NumberToggle()<cr>
 
 "set clipboard+=unnamedplus
 
