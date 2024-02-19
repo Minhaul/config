@@ -1,0 +1,15 @@
+# generic dev session
+rename-session tokill
+new -s generic-dev -n source -c /home/minhaul/repos
+kill-session -t tokill
+
+new-window -d -n git/build
+split-window -d -h -t git/build
+
+new-window -d -n debug
+split-window -d -h -b -t debug
+
+new-window -d -n general
+split-window -d -h -t general
+
+select-window -t git/build
