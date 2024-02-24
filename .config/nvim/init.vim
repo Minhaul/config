@@ -62,10 +62,10 @@ require('gitsigns').setup {
     map('n', '<leader>hR', '<cmd>Gitsigns reset_buffer<CR>')
     map('n', '<leader>hp', '<cmd>Gitsigns preview_hunk<CR>')
     map('n', '<leader>hb', '<cmd>lua require"gitsigns".blame_line{full=true}<CR>')
-    map('n', '<leader>tb', '<cmd>Gitsigns toggle_current_line_blame<CR>')
+    -- map('n', '<leader>tb', '<cmd>Gitsigns toggle_current_line_blame<CR>')
     map('n', '<leader>hd', '<cmd>Gitsigns diffthis<CR>')
     map('n', '<leader>hD', '<cmd>lua require"gitsigns".diffthis("~")<CR>')
-    map('n', '<leader>td', '<cmd>Gitsigns toggle_deleted<CR>')
+    -- map('n', '<leader>td', '<cmd>Gitsigns toggle_deleted<CR>')
 
     -- Text object
     map('o', 'ih', ':<C-U>Gitsigns select_hunk<CR>')
@@ -365,7 +365,9 @@ nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
 " GoTo code navigation
-nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> ge :call CocAction('jumpDefinition')<CR>
+nmap <silent> gd :call CocAction('jumpDefinition', 'split')<CR>
+" nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
